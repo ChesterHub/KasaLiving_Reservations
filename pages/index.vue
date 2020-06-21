@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-for="re in reservations" v-bind:key="re.confirmationCode">
-      ohyea
+      {{re.city}} -- {{re.confirmationCode}}
       {{re.checkInDate}} -- {{re.checkOutDate}}
     </div>
   </div>
