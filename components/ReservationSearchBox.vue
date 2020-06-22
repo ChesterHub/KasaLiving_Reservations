@@ -8,7 +8,12 @@
     </p>
     <input class="re-input">
     <div class="re-list">
-        <div class="re-list-item" v-for="re in reservations" v-bind:key="re.confirmationCode">
+        <div 
+            class="re-list-item" 
+            v-for="re in reservations" 
+            v-bind:key="re.confirmationCode"
+            v-on:click="onReservationClick(re.confirmationCode)"
+        >
         {{re.city}} -- {{re.confirmationCode}}
         {{re.checkInDate}} -- {{re.checkOutDate}}
         </div>
@@ -19,7 +24,12 @@
 <script>
 export default {
     name: "ReservationSearchBox",
-    props : ['reservations']
+    props : ['reservations'],
+    methods: {
+        onReservationClick(code) {
+            this.$router.push(`/${code}`)
+        }
+    }
 }
 </script>
 
