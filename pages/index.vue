@@ -18,14 +18,19 @@ export default {
     }
   },
   async created() {
-    const config = {
-      headers: {'Accept': 'application/json'}
-    }
-    try {
-      const res = await axios.get('https://my-json-server.typicode.com/ChesterHub/KasaLiving_JsonServer/reservations', config)
-      this.reservations = res.data
-    } catch (err) {
-      console.log(err)
+    this.getUserReservations()
+  },
+  methods: {
+    async getUserReservations() {
+      const config = {
+        headers: {'Accept': 'application/json'}
+      }
+      try {
+        const res = await axios.get('https://my-json-server.typicode.com/ChesterHub/KasaLiving_JsonServer/reservations', config)
+        this.reservations = res.data
+      } catch (err) {
+        console.log(err)
+      }
     }
   }
   
