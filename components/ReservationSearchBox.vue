@@ -12,7 +12,7 @@
             class="re-list-item" 
             v-for="re in reservations" 
             v-bind:key="re.confirmationCode"
-            v-on:click="onReservationClick(re.confirmationCode)"
+            v-on:click="onReservationClick(re)"
         >
         {{re.city}} -- {{re.confirmationCode}}
         {{re.checkInDate}} -- {{re.checkOutDate}}
@@ -26,8 +26,11 @@ export default {
     name: "ReservationSearchBox",
     props : ['reservations'],
     methods: {
-        onReservationClick(code) {
-            this.$router.push(`/${code}`)
+        onReservationClick(reservation) {
+            this.$router.push({
+                path: `/${reservation.confirmationCode}`,
+                query: {...reservation}
+            })
         }
     }
 }
