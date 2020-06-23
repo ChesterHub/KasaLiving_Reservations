@@ -35,11 +35,13 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/pwa',
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
   ],
   /*
   ** Build configuration
@@ -51,6 +53,11 @@ export default {
     config: {
       productionTip: false,
       devtools: true
+    }
+  },
+  pwa: {
+    workbox: {
+      /* workbox options */
     }
   }
 }
