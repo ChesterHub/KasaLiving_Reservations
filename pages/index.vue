@@ -1,43 +1,46 @@
 <template>
-  <div class="container">
-    <div v-for="re in reservations" v-bind:key="re.confirmationCode">
-      {{re.city}} -- {{re.confirmationCode}}
-      {{re.checkInDate}} -- {{re.checkOutDate}}
-    </div>
+  <div class="index-container">
+    <ReservationSearchBox v-bind:reservations="reservations"/>
   </div>
 </template>
 
 <script>
 import axios from "axios"
+import ReservationSearchBox from "../components/ReservationSearchBox"
 
 export default {
+  components: {
+    ReservationSearchBox
+  },
   data() {
     return {
       reservations: []
     }
   },
-  async created() {
-    const config = {
-      headers: {'Accept': 'application/json'}
-    }
-    try {
-      const res = await axios.get('https://my-json-server.typicode.com/ChesterHub/KasaLiving_JsonServer/reservations', config)
-      this.reservations = res.data
-    } catch (err) {
-      console.log(err)
+  created() {
+    this.getUserReservations()
+  },
+  methods: {
+    async getUserReservations() {
+      const config = {
+        headers: {'Accept': 'application/json'}
       }
+      try {
+        const res = await axios.get('https://my-json-server.typicode.com/ChesterHub/KasaLiving_JsonServer/reservations', config)
+        this.reservations = res.data
+      } catch (err) {
+        console.log(err)
+      }
+    }
   }
   
 }
 </script>
 
 <style>
-.container {
+.index-container {
   margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  margin-top: 10px;
+  margin-left: 100px;
 }
 </style>

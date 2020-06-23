@@ -24,5 +24,12 @@ export default {
 </script>
 
 <style scoped>
-    
+    ul {
+        text-align: right;
+        margin-right: 40px;
+    }
+    li {
+        display: inline-block;
+        margin-left: 4px;
+    }
 </style>
