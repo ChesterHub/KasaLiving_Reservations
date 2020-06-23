@@ -18,7 +18,7 @@
           <p>{{`${reservation.checkInDate} - ${reservation.checkOutDate}`}}</p>
         </div>
         <div class="detail-row">
-          <h5 class="title">Confirmation</h5>
+          <h5 class="title">Confirmation Code</h5>
           <p>#{{reservation.confirmationCode}}</p>
         </div>
       </div>

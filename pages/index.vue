@@ -17,7 +17,7 @@ export default {
       reservations: []
     }
   },
-  async created() {
+  created() {
     this.getUserReservations()
   },
   methods: {

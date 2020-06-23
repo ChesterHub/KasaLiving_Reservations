@@ -6,16 +6,16 @@
   <p class="re-subtitle">
     You can search by providing the city or the confirmation code of your reservation.
   </p>
-  <input class="re-input">
+  <input class="re-input" v-on:input="onInputChange">
   <div class="re-list">
     <div 
       class="re-list-item" 
-      v-for="re in reservations" 
+      v-for="re in filteredReservations" 
       v-bind:key="re.confirmationCode"
       v-on:click="onReservationClick(re)"
     >
-      {{re.city}} -- {{re.confirmationCode}}
-      {{re.checkInDate}} -- {{re.checkOutDate}}
+      <h5 class="title">{{re.city}}</h5>
+      <p>{{re.checkInDate}} - {{re.checkOutDate}}, {{re.confirmationCode}}</p>
     </div>
   </div>
 </div>
@@ -25,7 +25,34 @@
 export default {
   name: "ReservationSearchBox",
   props : ['reservations'],
+  data() {
+    return {
+      filteredReservations: []
+    }
+  },
+  watch: {
+    reservations: {
+      immediate: true,
+      handler(newList) {
+        this.updateFilteredReservations(newList)
+      }
+    }
+  },
   methods: {
+    onInputChange(e) {
+      let val = e.target.value.toLowerCase()
+      this.updateFilteredReservations(this.reservations, val)
+
+    },
+    updateFilteredReservations(newList, searchStr = "") {
+      if (searchStr) {
+        this.filteredReservations = newList.filter((item) => {
+          return item.confirmationCode.toLowerCase().includes(searchStr) || item.city.toLowerCase().includes(searchStr)
+        })
+      } else {
+        this.filteredReservations = newList
+      }
+    },
     onReservationClick(reservation) {
       this.$router.push({
         path: `/${reservation.confirmationCode}`,
@@ -50,18 +77,27 @@ export default {
     margin-top: 24px;
     width: 100%;
     height: 40px;
+    font-size: 15px;
+    padding-left: 10px;
   }
   .re-list {
     border: 1px solid darkgray;
     background: white;
     margin-top: 6px;
     padding-top: 10px;
+    height: 121px;
+    overflow: scroll;
   }
   .re-list-item {
     display: block;
     height: 40px;
     width: 100%;
+    padding-left: 10px;
     margin-bottom: 2px;
+    font-size: 15px;
+  }
+  .re-list-item > p {
+    font-size: 13px;
   }
   .re-list-item:hover {
     background: #FAFAFA;
