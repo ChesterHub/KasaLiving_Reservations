@@ -56,8 +56,28 @@ export default {
     }
   },
   pwa: {
+    manifest: {
+      crossorigin: 'use-credentials'
+    },
     workbox: {
-      /* workbox options */
+      preCaching: [
+        {
+          url: "/"
+        }
+      ],
+      cleanOutdatedCaches: true,
+      runtimeCaching: [
+        {
+          urlPattern: 'https://my-json-server.typicode.com/ChesterHub/KasaLiving_JsonServer/.*',
+          method: 'GET',
+          handler: 'networkFirst'
+        },
+        {
+          urlPattern: '/.*',
+          method: 'GET',
+          handler: 'networkFirst'
+        }
+      ],
     }
   }
 }

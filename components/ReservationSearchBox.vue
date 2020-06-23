@@ -56,7 +56,8 @@ export default {
     onReservationClick(reservation) {
       this.$router.push({
         path: `/${reservation.confirmationCode}`,
-        query: {...reservation}
+        // disabled query for now, to allow for service workers to cache specific reservation requests
+        // query: {...reservation}
       })
     }
   }

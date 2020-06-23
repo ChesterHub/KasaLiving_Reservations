@@ -1,6 +1,6 @@
 <template>
   <div class="listing-page">
-      <div class="listing-title">Your Reservation in {{reservation.city}}</div>
+      <div class="listing-title">{{reservation.city ? `Your Reservation in ${reservation.city}` : "Failed to retrieve reservation"}}</div>
       <div class="listing-column">
         <img class="listing-img" v-bind:src="reservation.cityImage"/>
         <div class="listing-rating">
