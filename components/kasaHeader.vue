@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header class="header">
         <h1>Kasa</h1>
         <ul>
             <li>
@@ -24,8 +24,19 @@ export default {
 </script>
 
 <style scoped>
+    .header {
+        margin-left: 20px;
+        height: 85px;
+        line-height: 85px;
+        padding-left: 80px;
+    }
+    h1 {
+        display: inline-block;
+    }
     ul {
-        text-align: right;
+        display: inline-block;
+        position: absolute;
+        right: 0;
         margin-right: 40px;
     }
     li {

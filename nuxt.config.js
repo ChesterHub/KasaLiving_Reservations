@@ -35,11 +35,13 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/pwa',
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
   ],
   /*
   ** Build configuration
@@ -51,6 +53,32 @@ export default {
     config: {
       productionTip: false,
       devtools: true
+    }
+  },
+  pwa: {
+    manifest: {
+      crossorigin: 'use-credentials'
+    },
+    workbox: {
+      skipWaiting: true,
+      preCaching: [
+        {
+          url: "/"
+        }
+      ],
+      cleanOutdatedCaches: true,
+      runtimeCaching: [
+        {
+          urlPattern: 'https://my-json-server.typicode.com/ChesterHub/KasaLiving_JsonServer/.*',
+          method: 'GET',
+          handler: 'networkFirst'
+        },
+        {
+          urlPattern: '/*',
+          method: 'GET',
+          handler: 'networkFirst'
+        }
+      ],
     }
   }
 }
