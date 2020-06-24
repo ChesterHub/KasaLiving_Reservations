@@ -70,6 +70,7 @@ export default {
     width: 448px;
     height: 488px;
     padding: 48px 48px 0 48px;
+    z-index: 1;
   }
   .re-subtitle {
     margin-top: 24px;

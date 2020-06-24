@@ -1,6 +1,7 @@
 <template>
   <div class="index-container">
     <ReservationSearchBox v-bind:reservations="reservations"/>
+    <img class="index-img" src="../assets/livingroom.png"/>
   </div>
 </template>
 
@@ -42,5 +43,14 @@ export default {
   margin: 0 auto;
   margin-top: 10px;
   margin-left: 100px;
+  min-height: calc(100vh - 85px);
+}
+.index-img {
+  position: absolute;
+  top: 10vh;
+  max-width: 100%;
+  height: auto;
+  margin-left: 20%;
+  z-index: -1;
 }
 </style>
