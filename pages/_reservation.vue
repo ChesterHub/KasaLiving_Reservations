@@ -70,6 +70,7 @@ export default {
 <style scoped>
 .listing-page {
   padding-left: 108px;
+  min-height: calc(100vh - 85px);
 }
 .listing-title {
   font-weight: bold;
