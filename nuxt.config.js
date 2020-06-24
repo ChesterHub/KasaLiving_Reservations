@@ -60,6 +60,7 @@ export default {
       crossorigin: 'use-credentials'
     },
     workbox: {
+      skipWaiting: true,
       preCaching: [
         {
           url: "/"
@@ -73,7 +74,7 @@ export default {
           handler: 'networkFirst'
         },
         {
-          urlPattern: '/.*',
+          urlPattern: '/*',
           method: 'GET',
           handler: 'networkFirst'
         }

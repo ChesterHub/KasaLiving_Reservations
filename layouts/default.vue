@@ -2,15 +2,18 @@
   <div>
     <KasaHeader/>
     <nuxt/>
+    <KasaFooter/>
   </div>
 </template>
 
 <script>
-import KasaHeader from '../components/kasaHeader' 
+import KasaHeader from '../components/KasaHeader' 
+import KasaFooter from '../components/KasaFooter' 
 
 export default {
   components: {
-    KasaHeader
+    KasaHeader,
+    KasaFooter
   }  
 }
 </script>
