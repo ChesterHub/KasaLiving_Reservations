@@ -6,7 +6,7 @@
 # install dependencies
 $ npm install
 
-# build for production and launch server (with Service Worker)
+# build for production and launch server (required for Service Worker to work)
 $ npm run build
 $ npm run start
 
