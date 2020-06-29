@@ -13,7 +13,7 @@
 $ npm run dev
 ```
 
-While QAing, I found a bug with the `NUXT workbox-module` itself.
+While QAing, I found a bug with the `NUXT workbox-module` itself. I would love to chat about it during the project overview.
 
 In order for a SPA to cache pages from dynamic urls, workbox has to use `registerNavigationRoute`. The Nuxt module for Workbox is still at version 4, so I would have to use https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v4.
 
