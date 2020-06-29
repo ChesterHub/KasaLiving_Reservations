@@ -2,19 +2,28 @@
 
 ## Build Setup
 
-```bash
-# install dependencies
-$ npm install
+```
+1 - npm install
 
 # build for production and launch server (required for Service Worker to work)
-$ npm run build
-$ npm run start
+2 - npm run build && npm run start
+
 
 # serve with hot reload at localhost:3000
 $ npm run dev
-
-
-# generate static project
-$ npm run generate
 ```
+
+While QAing, I found a bug with the `NUXT-workbox module` itself. In order for a SPA to cache pages from dynamic urls, workbox has to use `registerNavigationRoute (version 4)`. In order to use that method inside of the NUXT app, I had to add a custom service worker to workbox. Unfortunately there is an ongoing bug with adding custom service workers in the Nuxt framework. You can find it here where it goes into detail:
+- https://github.com/nuxt-community/pwa-module/issues/268
+- https://github.com/GoogleChrome/workbox/issues/1324
+
+In my custom sw file "kasa-sw.js", I have code that is commented out that should be the solution if this bug did not exist.
+The workaround right now is after building the production app, I copy and paste that code into the generated `sw.js` file under `// Runtime Caching`.
+
+Code to paste : `const cacheRoute = workbox.precaching.getCacheKeyForURL("/")
+                  workbox.routing.registerNavigationRoute(cacheRoute)`
+
+
+
+
 
