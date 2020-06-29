@@ -13,7 +13,9 @@
 $ npm run dev
 ```
 
-While QAing, I found a bug with the `NUXT-workbox module` itself. In order for a SPA to cache pages from dynamic urls, workbox has to use `registerNavigationRoute (version 4)`. In order to use that method inside of the NUXT app, I had to add a custom service worker to workbox. Unfortunately there is an ongoing bug with adding custom service workers in the Nuxt framework. You can find it here where it goes into detail:
+While QAing, I found a bug with the `NUXT-workbox module` itself.
+
+In order for a SPA to cache pages from dynamic urls, workbox has to use `registerNavigationRoute (version 4)`. In order to use that method inside of the NUXT app, I had to add a custom service worker to workbox. Unfortunately there is an ongoing bug with adding custom service workers in the Nuxt framework. You can find it here where it goes into detail:
 - https://github.com/nuxt-community/pwa-module/issues/268
 - https://github.com/GoogleChrome/workbox/issues/1324
 
@@ -22,6 +24,8 @@ The workaround right now is after building the production app, I copy and paste 
 
 Code to paste : `const cacheRoute = workbox.precaching.getCacheKeyForURL("/")
                   workbox.routing.registerNavigationRoute(cacheRoute)`
+                 
+If the code is not added, most of the caching still works. The only thing that wont work is directly navigating to a specific reservation while offline (unless of course you navigate directly to that reservation while online, then the page will be cached).
 
 
 
