@@ -60,6 +60,10 @@ export default {
       crossorigin: 'use-credentials'
     },
     workbox: {
+      importScripts: [
+        'kasa-sw.js'
+      ],
+      config: true,
       skipWaiting: true,
       preCaching: [
         {
