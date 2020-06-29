@@ -1,6 +1,5 @@
 # KasaLiving_Reservations
-
-## Build Setup
+I tried to stay within the Nuxt Framework and utilized its modules, such as https://pwa.nuxtjs.org/modules/workbox.html#options
 
 ```
 1 - npm install
