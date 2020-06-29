@@ -25,7 +25,7 @@ The workaround right now is after building the production app, I copy and paste 
 Code to paste : `const cacheRoute = workbox.precaching.getCacheKeyForURL("/")
                   workbox.routing.registerNavigationRoute(cacheRoute)`
                  
-If the code is not added, most of the caching still works. The only thing that wont work is directly navigating to a specific reservation while offline (unless of course you navigate directly to that reservation while online, then the page will be cached).
+If the code is not added, most of the caching still works. The only thing that wont work is directly navigating to a specific reservation while offline (unless of course you navigate directly to that reservation while online prior, then the page will be cached).
 
 
 
