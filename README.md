@@ -15,7 +15,9 @@ $ npm run dev
 
 While QAing, I found a bug with the `NUXT workbox-module` itself.
 
-In order for a SPA to cache pages from dynamic urls, workbox has to use `registerNavigationRoute (version 4)`. To do this within the Nuxt modules, I had to add a custom service worker to workbox `(https://pwa.nuxtjs.org/modules/workbox.html#adding-custom-service-worker)`. Unfortunately there is an ongoing bug with adding custom service workers in the Nuxt framework. You can find it here where it goes into detail:
+In order for a SPA to cache pages from dynamic urls, workbox has to use `registerNavigationRoute`. The Nuxt module for Workbox is still at version 4, so I would have to use https://developers.google.com/web/tools/workbox/guides/migrations/migrate-from-v4.
+
+To do this within the Nuxt modules, I had to add a custom service worker to workbox `(https://pwa.nuxtjs.org/modules/workbox.html#adding-custom-service-worker)`. Unfortunately there is an ongoing bug with adding custom service workers in the Nuxt framework. You can find it here where it goes into detail:
 - https://github.com/nuxt-community/pwa-module/issues/268
 - https://github.com/GoogleChrome/workbox/issues/1324
 
